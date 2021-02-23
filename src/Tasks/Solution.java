@@ -8,6 +8,19 @@ import java.util.ArrayList;
 
 public class Solution {
 
+    public boolean[] toggleDoors(int numberOfDoors) {
+        boolean[] result = new boolean[numberOfDoors];
+        for (int i = 0; i < numberOfDoors; ++i) {
+            result[i] = true;
+        }
+        for (int i = 1; i < numberOfDoors; ++i) {
+            for (int j = i; j < numberOfDoors; j = j + i) {
+                result[j - 1] = !result[j - 1];
+            }
+        }
+        return result;
+    }
+
     public static class Product {
         int id;
         String productName;
@@ -21,6 +34,7 @@ public class Solution {
             this.quantity = quantity;
         }
 
+
         @Override
         public String toString() {
 
@@ -28,17 +42,22 @@ public class Solution {
         }
     }
 
+
     public static Product getProduct(String string) {
         String id = string.substring(0, 8).trim();
+
+
         String name = string.substring(8, 38).trim();
         String price = string.substring(38, 46).trim();
         String quantity = string.substring(46, 50).trim();
         return new Product(Integer.parseInt(id), name, price, quantity);
+
     }
+
     public static void main(String[] args) throws Exception {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String fileName = reader.readLine();
+        //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = "C:\\Users\\admin\\IdeaProjects\\TheFirstOne\\src\\someFile";
 
         ArrayList<Product> products = new ArrayList<>();
         try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
@@ -51,12 +70,11 @@ public class Solution {
                     int id = Integer.parseInt(args[1]);
                     String name = "";
                     for (int index = 2; index < args.length - 2; index++) {
-                            name += args[index] + " ";
+                        name += args[index] + " ";
                         System.out.println(name);
                     }
 
             }
-
         }
 
     }
