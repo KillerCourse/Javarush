@@ -8,19 +8,6 @@ import java.util.ArrayList;
 
 public class Solution {
 
-    public boolean[] toggleDoors(int numberOfDoors) {
-        boolean[] result = new boolean[numberOfDoors];
-        for (int i = 0; i < numberOfDoors; ++i) {
-            result[i] = true;
-        }
-        for (int i = 1; i < numberOfDoors; ++i) {
-            for (int j = i; j < numberOfDoors; j = j + i) {
-                result[j - 1] = !result[j - 1];
-            }
-        }
-        return result;
-    }
-
     public static class Product {
         int id;
         String productName;
